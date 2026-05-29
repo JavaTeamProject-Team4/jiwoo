@@ -10,7 +10,7 @@ import model.TakenCourse;
 
 public class GraduationApp {
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);//1231231
+        Scanner sc = new Scanner(System.in);
 
         CourseDB.loadGeneralCourses();
 
@@ -50,7 +50,6 @@ public class GraduationApp {
                 student.setGpa(sc.nextDouble());
 
                 System.out.println("학생 정보 입력 완료");
-                System.out.println("");
             }
 
             else if (menu == 2) {
