@@ -16,7 +16,7 @@ public class CourseDB {
     public static void loadGeneralCourses() {
         genEdCourses.clear();
         // 절대 경로 반영
-        loadGeneralFile("C:/java_workspace/Hello/data/courses_cleaned.txt");
+        loadGeneralFile("C:/java_workspace/graduation/data/courses_cleaned.txt");
     }
 
     public static void loadMajorCoursesByMajor(int major) {
