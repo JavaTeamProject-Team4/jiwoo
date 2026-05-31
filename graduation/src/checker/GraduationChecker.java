@@ -36,6 +36,22 @@ public class GraduationChecker {
         System.out.println(
                 "===== 졸업 요건 검사 ====="
         );
+        
+        String majorName = "";
+        switch (student.getStudentMajor()) {
+            case 1: majorName = "심화컴퓨팅"; break;
+            case 2: majorName = "플랫폼SW"; break;
+            case 3: majorName = "인공지능컴퓨팅"; break;
+            case 4: majorName = "글로벌SW"; break;
+            default: majorName = "알수없음"; break;
+        }
+        
+        
+        // 학생 이름 및 학번 출력 추가
+        System.out.println(
+        		" " +majorName + " " + student.getStudentName() + " (" + student.getStudentId() + ")"
+        		);
+        System.out.println("");
 
         // 모든 checker 실행
         for(int i = 0;

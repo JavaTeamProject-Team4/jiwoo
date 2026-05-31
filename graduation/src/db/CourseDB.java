@@ -15,18 +15,18 @@ public class CourseDB {
 
     public static void loadGeneralCourses() {
         genEdCourses.clear();
-        // 절대 경로 반영
-        loadGeneralFile("C:/java_workspace/graduation/data/courses_cleaned.txt");
+        // 프로젝트 내부의 data 폴더를 가리키는 상대 경로로 복구
+        loadGeneralFile("data/courses_cleaned.txt");
     }
 
     public static void loadMajorCoursesByMajor(int major) {
         majorCourses.clear();
 
-        // 절대 경로 반영
+        // 프로젝트 내부의 data 폴더를 가리키는 상대 경로로 복구
         if (major == 2) {
-            loadMajorFile("C:/java_workspace/Hello/data/platform_software_courses.txt");
+            loadMajorFile("data/platform_software_courses.txt");
         } else if (major == 3) {
-            loadMajorFile("C:/java_workspace/Hello/data/ai_computing_courses.txt");
+            loadMajorFile("data/ai_computing_courses.txt");
         } else {
             System.out.println("해당 전공의 전공 과목 파일이 아직 없습니다.");
         }
@@ -106,14 +106,25 @@ public class CourseDB {
     }
 
     public static Course findCourse(String input) {
+        // 입력받은 문자열에서 모든 띄어쓰기(공백)를 제거
+        String noSpaceInput = input.replace(" ", "");
+
         for (MajorCourse mc : majorCourses) {
-            if (mc.getLectureName().equals(input) || mc.getCourseCode().equals(input)) {
+            // DB에 있는 과목명과 과목코드에서도 띄어쓰기를 제거한 후 비교
+            String noSpaceName = mc.getLectureName().replace(" ", "");
+            String noSpaceCode = mc.getCourseCode().replace(" ", "");
+            
+            if (noSpaceName.equals(noSpaceInput) || noSpaceCode.equals(noSpaceInput)) {
                 return mc;
             }
         }
 
         for (GeneralCourse gc : genEdCourses) {
-            if (gc.getLectureName().equals(input) || gc.getCourseCode().equals(input)) {
+            // 교양 과목도 동일하게 띄어쓰기 제거 후 비교
+            String noSpaceName = gc.getLectureName().replace(" ", "");
+            String noSpaceCode = gc.getCourseCode().replace(" ", "");
+            
+            if (noSpaceName.equals(noSpaceInput) || noSpaceCode.equals(noSpaceInput)) {
                 return gc;
             }
         }

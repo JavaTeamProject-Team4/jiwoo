@@ -76,7 +76,23 @@ public class GraduationApp {
                         System.out.println("해당 과목을 찾을 수 없습니다.");
                         continue;
                     }
+                    
+                    boolean isDuplicate = false;
+                    for (int i = 0; i < student.getCourseCount(); i++) {
+                        Course taken = student.getTakenCourses()[i].getCourse();
+                        // 과목 코드나 과목명이 이미 수강한 과목 목록에 있는지 비교
+                        if (taken.getCourseCode().equals(course.getCourseCode()) ||
+                            taken.getLectureName().equals(course.getLectureName())) {
+                            isDuplicate = true;
+                            break;
+                        }
+                    }
 
+                    if (isDuplicate) {
+                        System.out.println("이미 추가된 과목입니다.");
+                        continue;
+                    }
+                    
                     System.out.print("성적 입력(A+, A0, B+, P, F, NP 등): ");
                     // [수정된 부분] 성적도 nextLine()으로 통일하여 안전하게 입력받음
                     String grade = sc.nextLine().trim();
