@@ -13,7 +13,7 @@ public class GpaChecker implements RequirementChecker {
     @Override
     public String getMessage(Student student) {
         return check(student)
-                ? String.format("평점 요건 충족 (%.2f/%.2f)", student.getGpa(), REQUIRED_GPA)
-                : String.format("평점 요건 미충족 (%.2f/%.2f)", student.getGpa(), REQUIRED_GPA);
+                ? String.format("평균 성적 요건 충족 (%.2f/%.2f)", student.getGpa(), REQUIRED_GPA)
+                : String.format("평균 성적 요건 미충족 (%.2f/%.2f)", student.getGpa(), REQUIRED_GPA);
     }
 }

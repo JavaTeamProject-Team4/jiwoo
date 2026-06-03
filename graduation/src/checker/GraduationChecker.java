@@ -23,7 +23,8 @@ public class GraduationChecker {
                 new SDGChecker(),
                 new EnglishChecker(),
                 new CounselingChecker(),
-                new GpaChecker()
+                new GpaChecker(),
+                new GsTrackChecker()
         };
     }
 
@@ -59,15 +60,13 @@ public class GraduationChecker {
             i++) {
 
             // 결과 출력
-            System.out.println(
-                    checkers[i]
-                    .getMessage(student)
-            );
+        	String msg = checkers[i].getMessage(student);
+            if (!msg.isEmpty()) {
+                System.out.println(msg);
+            }
 
             // 하나라도 실패 시
-            if(!checkers[i]
-                    .check(student)) {
-
+            if(!checkers[i].check(student)) {
                 canGraduate = false;
             }
         }
