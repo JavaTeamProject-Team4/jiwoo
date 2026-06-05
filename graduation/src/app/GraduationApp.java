@@ -201,15 +201,14 @@ public class GraduationApp {
                         }
                         
                     } else if (subMenu == 2) { // 2. 내역 확인
-                        System.out.println("\n[ 현재 수강 내역: 총 " + student.getCourseCount() + "과목 ]");
+                        System.out.println("\n[수강 과목]");
                         if (student.getCourseCount() == 0) {
                             System.out.println("입력된 수강 과목이 없습니다.");
                         } else {
                             for (int i = 0; i < student.getCourseCount(); i++) {
                                 TakenCourse tc = student.getTakenCourses()[i];
-                                System.out.printf("- %s (%s) : %s\n", 
+                                System.out.printf("- %s : %s\n", 
                                         tc.getCourse().getLectureName(), 
-                                        tc.getCourse().getCourseCode(), 
                                         tc.getGrade());
                             }
                         }
@@ -241,12 +240,11 @@ public class GraduationApp {
                                 System.out.println(target + " 과목이 수강 내역에서 삭제되었습니다.");
                                 
                                 // 삭제 성공 시 남은 수강 과목 리스트 출력
-                                System.out.println("\n[ 남은 수강 내역: 총 " + student.getCourseCount() + "과목 ]");
+                                System.out.println("\n[수강 과목]");
                                 for (int i = 0; i < student.getCourseCount(); i++) {
                                     TakenCourse tc = student.getTakenCourses()[i];
-                                    System.out.printf("- %s (%s) : %s\n", 
+                                    System.out.printf("- %s : %s\n", 
                                             tc.getCourse().getLectureName(), 
-                                            tc.getCourse().getCourseCode(), 
                                             tc.getGrade());
                                 }
                                 System.out.println("--------------------------------");
